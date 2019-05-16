@@ -175,7 +175,9 @@ def get_answer():
                         shouldWait = False
                         valueNode = c
                     if c.tag == 'message':
-                        messageNode = c[1]
+                        for m in c:
+                            if m.tag not in ("message_level", "option"):
+                                messageNode = m
                 if shouldWait:
                     continue
                 else:
